@@ -8,3 +8,9 @@ webbrowser.open('https://www.amazon.co.uk/s?k=' + userInput)
 
 
 # - https://youtu.be/mTOXVRao3eA?list=PLRzwgpycm-Fjvdf7RpmxnPMyJ80RecJjv splash
+
+#fetch('http://localhost:8050/render.html?url=
+
+# a-link-normal.s-underline-text.s-underline-link-text.s-link-style.a-text-normal
+
+# remeber hrefs dont like ::text
