@@ -30,6 +30,9 @@ DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
 
 HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
 
+FEED_EXPORT_ENCODING = 'utf-8'
+# makes scrapy recognise unicode. Without it £ is U+00A3
+
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'reviewScrape (+http://www.yourdomain.com)'
 
