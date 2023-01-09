@@ -6,8 +6,8 @@ from scrapy_splash import SplashRequest
 #fetch('http://localhost:8050/render.html?url=
 # put infront of terminal url
 
-class ReviewSpider(scrapy.Spider):
-    name = 'reviewSearch'
+class SearchSpider(scrapy.Spider):
+    name = 'search'
 
     def start_requests(self):
         userInput = input("Enter search data: ")
@@ -29,7 +29,17 @@ class ReviewSpider(scrapy.Spider):
                     # remember hrefs dont like ::text
                 }
 
-os.system("scrapy crawl reviewSearch -O test.json")
+os.system("scrapy crawl search -O test.json")
 
 # build second spider for review page
 # then combine
+
+# #customer_review-R33A3MQMORZ8OW
+
+#customer_review-R33A3MQMORZ8OW>div.a-row.a-spacing-small.review-data
+
+# https://www.amazon.co.uk/God-of-War-Ragnar%C3%B6k-PS5/dp/B0B6FGSKCQ/ref=sr_1_1?keywords=god%2Bof%2Bwar%2Bragnarok%2Bps5&qid=1673294296&sprefix=god%2Bof%2Bw%2Caps%2C117&sr=8-1&th=1
+
+# response.css("span[data-hook=review-body] ::text").getall()
+
+# get just gives a bunch of "nnnnn", getall gets all reviews plus that garbage, so partly working
