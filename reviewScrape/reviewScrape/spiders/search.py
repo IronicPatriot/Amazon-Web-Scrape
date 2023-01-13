@@ -34,10 +34,6 @@ os.system("scrapy crawl search -O test.json")
 # finish
 # then combine
 
-# #customer_review-R33A3MQMORZ8OW
-
-#customer_review-R33A3MQMORZ8OW>div.a-row.a-spacing-small.review-data
-
 
 # response.css("span[data-hook=review-body] ::text").getall()
 

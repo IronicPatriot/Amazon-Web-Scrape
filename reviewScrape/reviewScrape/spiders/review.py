@@ -1,10 +1,11 @@
-import webbrowser, scrapy, os
+import scrapy, os
 from scrapy_splash import SplashRequest
 
 class ReviewSpider(scrapy.Spider):
     name = 'review'
 
     def start_requests(self):
+        # start_urls = 'https://www.amazon.co.uk/gp/product/1401263321/ref=ewc_pr_img_1?smid=A3P5ROKL5A1OLE&psc=1'
         start_urls = 'https://www.amazon.co.uk/God-of-War-Ragnar%C3%B6k-PS5/dp/B0B6FGSKCQ/ref=sr_1_1?keywords=god+of+war+ragnarok+ps5&qid=1673294296&sprefix=god+of+w%2Caps%2C117&sr=8-1'
         yield SplashRequest(url=start_urls, callback=self.parse)
 
@@ -15,11 +16,13 @@ class ReviewSpider(scrapy.Spider):
                 'USERNAME': item.css('div:nth-child(1)>a>div.a-profile-content>span::text').get(),
                 "rating": item.css("*[data-hook*=review-star-rating] ::text").re(r"(\d+\.*\d*) out"),
                 # from example code, remove zero to get all
-                'TEXT': item.css("span[data-hook=review-body] ::text").getall(),
+                # 'TEXT': item.css("span[data-hook=review-body] ::text").getall(),
+                'TEXT': "".join(item.css("span[data-hook=review-body] ::text").getall()).strip().removesuffix('Read more'),
                 # has to be a getall or just gets the first line of review
+                # join is Python code not scrapy, takes all separate strings and merges them together
 
             }
+        
 
 os.system("scrapy crawl review -O test-two.json")
 
-# remove junk from text get
