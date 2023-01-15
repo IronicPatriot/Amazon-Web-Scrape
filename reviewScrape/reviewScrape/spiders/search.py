@@ -20,12 +20,12 @@ class SearchSpider(scrapy.Spider):
         # yield scrapy.Request #when not using splash
 
     def parse(self, response):
-        product = response.css('div.s-result-item[data-component-type=s-search-result]')
-        for item in product:
+        user_url = response.css('div.s-result-item[data-component-type=s-search-result]')
+        for product in user_url:
                 yield{
-                    'NAME': item.css('h2>a>span::text').get(),
-                    'PRICE': item.css('.a-offscreen::text').get(default = 'No Price Available'),
-                    'LINK': item.css('h2>a').attrib['href'],
+                    'PRODUCT_NAME': product.css('h2>a>span::text').get(),
+                    'PRICE': product.css('.a-offscreen::text').get(default = 'No Price Available'),
+                    'LINK': product.css('h2>a').attrib['href'],
                     # remember hrefs dont like ::text
                 }
 
