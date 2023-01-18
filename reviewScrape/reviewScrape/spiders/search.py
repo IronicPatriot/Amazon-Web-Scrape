@@ -6,6 +6,7 @@ from scrapy_splash import SplashRequest
 #fetch('http://localhost:8050/render.html?url=
 # put infront of terminal url
 
+
 class SearchSpider(scrapy.Spider):
     name = 'search'
 
@@ -20,21 +21,17 @@ class SearchSpider(scrapy.Spider):
         # yield scrapy.Request #when not using splash
 
     def parse(self, response):
+        key_value = 0
         user_url = response.css('div.s-result-item[data-component-type=s-search-result]')
         for product in user_url:
+                key_value += 1
                 yield{
+                    'PRODUCT_NUMBER': key_value,
                     'PRODUCT_NAME': product.css('h2>a>span::text').get(),
                     'PRICE': product.css('.a-offscreen::text').get(default = 'No Price Available'),
                     'LINK': product.css('h2>a').attrib['href'],
                     # remember hrefs dont like ::text
                 }
 
-os.system("scrapy crawl search -O test.json")
+os.system("scrapy crawl search -O crawl_results.json")
 
-# finish
-# then combine
-
-
-# response.css("span[data-hook=review-body] ::text").getall()
-
-#cm-cr-dp-review-list
