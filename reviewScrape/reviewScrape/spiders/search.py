@@ -14,7 +14,7 @@ class SearchSpider(scrapy.Spider):
     def start_requests(self):
         userInput = input("Enter search data: ")
         userInput.replace(" ", "+")
-        webbrowser.open('https://www.amazon.co.uk/s?k=' + userInput)
+        # webbrowser.open('https://www.amazon.co.uk/s?k=' + userInput)
         # doesn't need to open link in final version, just for testing
         start_urls = 'https://www.amazon.co.uk/s?k=' + userInput
         yield SplashRequest(url=start_urls, callback=self.parse)
