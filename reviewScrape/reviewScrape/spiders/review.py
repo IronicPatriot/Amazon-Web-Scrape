@@ -1,4 +1,4 @@
-import scrapy, os, json
+import scrapy, os, json, pprint
 from scrapy_splash import SplashRequest
 
 class ReviewSpider(scrapy.Spider):
@@ -9,7 +9,9 @@ class ReviewSpider(scrapy.Spider):
         data = json.load(f)
         data_len = len(data)
         # not range
-        print(data)
+        # print(data)
+        prettyprint = pprint.PrettyPrinter(indent=4)
+        prettyprint.pprint(data)
 
         while True:
             try:

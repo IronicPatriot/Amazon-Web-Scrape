@@ -51,5 +51,4 @@ os.system("scrapy crawl search -O crawl_results.json")
 
 # 'https://www.amazon.com/s?k={keyword}&page={page_num}'
 
-# review is broken
 
